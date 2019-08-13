@@ -1,0 +1,10 @@
+{% extends 'example/base.html' %}
+
+{% block content %}
+<a href="{% url 'survey_create' %}">Create New Survey</a>
+<ul>
+    {% for survey in surveys %}
+    <li><a href="{% url 'survey_detail' survey.pk %}">{{survey}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

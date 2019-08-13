@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  example:
+    restart: always
+    container_name: example
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "9000:9000"

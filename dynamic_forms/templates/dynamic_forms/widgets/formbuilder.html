@@ -1,0 +1,53 @@
+<div id="fb-editor"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var textArea = $('[name="{{ widget.name }}"]')
+        var options = {
+            disabledActionButtons: ['save'],
+            disabledAttrs: [
+                'access',
+                'name',
+                'className',
+                'inline',
+                'other',
+            ],
+            disabledSubtypes: {
+                text: ['color', 'tel', 'password'],
+                textarea: ['tinymce'],
+            },
+            disableFields: ['autocomplete', 'button', 'file', 'header', 'paragraph', 'starRating', ],
+            editOnAdd: true,
+            fields: [{
+                label: "Email",
+                type: "text",
+                subtype: "email",
+                icon: "✉"
+            }],
+            formData: textArea.val().trim(),
+            scrollToFieldOnAdd: true,
+            stickyControls: {
+                enable: true,
+                offset: {
+                    top: 20,
+                    right: 20,
+                    left: 'auto'
+                }
+            }
+        };
+        var formBuilder = $('#fb-editor').formBuilder(options);
+        $("form").submit(function (e) {
+            textArea.val(formBuilder.actions.getData('json'))
+        });
+    });
+</script>
+<style>
+    .aligned label {
+        float: none !important
+    }
+</style>
+<textarea name="{{ widget.name }}" style="display:none" {% include "django/forms/widgets/attrs.html" %}>
+    {% if widget.value %}{{ widget.value }}{% else %}[]{% endif %}
+</textarea>

@@ -1,0 +1,20 @@
+{% extends 'example/base.html' %}
+
+{% block content %}
+<a href="{% url 'home' %}">All Surveys</a>
+<br>
+<a href="edit/">Edit Survey</a>
+<br>
+<a href="{% url 'survey_respond' object.pk %}">Respond To Survey</a>
+
+<p>Responses</p>
+<hr>
+{% for surveyresponse in object.surveyresponse_set.all %}
+<ul>
+    {% for k, v in surveyresponse.response.items %}
+    <li><strong>{{k}}: </strong> {{v}}</li>
+    {% endfor %}
+</ul>
+<hr>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+*.sw[a-z]
+*.py[oc]
+*.log
+
+*.egg-info/
+*.tox/
+
+*.sqlite3
+*.db
+
+.env
+env/
+
+.cache
+.coverage
+
+# Python release artifacts
+build/
+dist/
+_build/
+
+tags
+
+.idea/
+.vscode/
+.pytest_cache/
