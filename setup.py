@@ -25,14 +25,14 @@ setup(
     long_description_content_type='text/markdown',
     include_package_data=True,
     install_requires=[
-        'django>=2.0'
+        'django>=1.11,<2.0'
         ],
     license='MIT License',
     packages=find_packages(exclude=['tests', 'docs', 'example']),
     url='https://github.com/askvortsov1/dynamic-django-forms',
     zip_safe=False,
     classifiers=[
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
