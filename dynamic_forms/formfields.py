@@ -7,7 +7,7 @@ from .utils import gen_fields_from_json
 class FormBuilderField(forms.CharField):
     def __init__(self, *args, **kwargs):
         kwargs['widget'] = FormBuilderWidget
-        return super().__init__(*args, **kwargs)
+        return super(FormBuilderField, self).__init__(*args, **kwargs)
 
 
 class FormRenderField(forms.MultiValueField):
@@ -20,7 +20,7 @@ class FormRenderField(forms.MultiValueField):
         kwargs['require_all_fields'] = False
         kwargs['required'] = required
         del kwargs['max_length']
-        super().__init__(**kwargs)
+        super(FormRenderField, self).__init__(**kwargs)
         self.configure_widget()
 
     def get_bound_field(self, form, field_name):

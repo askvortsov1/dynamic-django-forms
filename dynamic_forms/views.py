@@ -13,7 +13,7 @@ class DynamicFormMixin(FormMixin):
         return self.form_model.objects.get(pk=pk)
 
     def get_form(self, *args, **kwargs):
-        form = super().get_form(*args, **kwargs)
+        form = super(DynamicFormMixin, self).get_form(*args, **kwargs)
         # Get instance of model containing form used for this response. Save this object as an instance variable for use in form_valid method
         form_instance_pk = self.kwargs[self.form_pk_url_kwarg]
         self.form_instance = self._get_object_containing_form(form_instance_pk)
@@ -27,4 +27,4 @@ class DynamicFormMixin(FormMixin):
         action = form.save(commit=False)
         action.survey = self.form_instance
         action.save()
-        return super().form_valid(form)
+        return super(DynamicFormMixin, self).form_valid(form)

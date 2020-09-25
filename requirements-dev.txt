@@ -1,4 +1,4 @@
-django>2.0,<2.2
+django>=1.11,<2.0
 django-crispy-forms
 
 pytest==4.0.1

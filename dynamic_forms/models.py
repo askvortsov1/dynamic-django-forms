@@ -9,7 +9,7 @@ class FormField(models.TextField):
     """Stores JSON Schema for form
     """
 
-    def from_db_value(self, value, expression, connection):
+    def from_db_value(self, value, expression, connection, context):
         if value is None:
             return []
         return json.loads(value)
@@ -26,14 +26,14 @@ class FormField(models.TextField):
 
     def formfield(self, **kwargs):
         kwargs['form_class'] = FormBuilderField
-        return super().formfield(**kwargs)
+        return super(FormField, self).formfield(**kwargs)
 
 
 class ResponseField(models.TextField):
     """Stores JSON response to form.
     """
 
-    def from_db_value(self, value, expression, connection):
+    def from_db_value(self, value, expression, connection, context):
         if value is None:
             return value
         return json.loads(value)
@@ -53,4 +53,4 @@ class ResponseField(models.TextField):
 
     def formfield(self, *args, **kwargs):
         kwargs['form_class'] = FormRenderField
-        return super().formfield(*args, **kwargs)
+        return super(ResponseField, self).formfield(*args, **kwargs)
