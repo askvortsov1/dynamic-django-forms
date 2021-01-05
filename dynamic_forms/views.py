@@ -2,7 +2,6 @@ from django.views.generic.edit import FormMixin
 
 
 class DynamicFormMixin(FormMixin):
-    form_model_pk_field = None
     form_field = "form"
     form_pk_url_kwarg = "pk"
 
