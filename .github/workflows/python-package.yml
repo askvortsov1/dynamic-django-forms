@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["36", "37", "38"]
+        python-version: ["3.6", "3.7", "3.8"]
         django-version: ["22", "30"]
 
     steps:
