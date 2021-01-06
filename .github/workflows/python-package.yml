@@ -31,9 +31,9 @@ jobs:
         pip install -r requirements-dev.txt
     - name: Pylama linting
       if: ${{ matrix.django-version }} == "30"
-      run: pylama dynamic-django-forms
+      run: pylama dynamic_forms
     - name: MyPy check type annotations
-      run: mypy dynamic-django-forms
+      run: mypy dynamic_forms
       if: ${{ matrix.django-version }} == "30"
       continue-on-error: true
     - name: Tests
