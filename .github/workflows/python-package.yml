@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8]
-        django-version: ["2.2", "3.0"]
+        python-version: ["36", "37", "38"]
+        django-version: ["22", "30"]
 
     steps:
     - uses: actions/checkout@v2
@@ -30,11 +30,11 @@ jobs:
         python -m pip install --upgrade pip django-stubs mypy tox
         pip install -r requirements-dev.txt
     - name: Pylama linting
-      if: ${{ matrix.django-version }} == "3.0"
+      if: ${{ matrix.django-version }} == "30"
       run: pylama dynamic-django-forms
     - name: MyPy check type annotations
       run: mypy dynamic-django-forms
-      if: ${{ matrix.django-version }} == "3.0"
+      if: ${{ matrix.django-version }} == "30"
       continue-on-error: true
     - name: Tests
       run: tox -e py${{ matrix.python-version }}-django${{ matrix.django-version }}
