@@ -40,7 +40,7 @@ jobs:
       run: |
         python_version=${{ matrix.python-version }}
         python_version="$(tr -d "\." <<<$python_version)"
-        $(tox -e py${python_version}-django${{ matrix.django-version }})
+        tox -e py${python_version}-django${{ matrix.django-version }}
     - uses: codecov/codecov-action@v1
       with:
         file: ./cov.xml # optional
