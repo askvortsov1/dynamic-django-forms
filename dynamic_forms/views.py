@@ -24,6 +24,6 @@ class DynamicFormMixin(FormMixin):
 
     def form_valid(self, form):
         action = form.save(commit=False)
-        action.survey = self.form_instance
+        setattr(action, self.response_form_fk_field, self.form_instance)
         action.save()
         return super().form_valid(form)
