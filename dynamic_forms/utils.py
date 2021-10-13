@@ -36,6 +36,8 @@ def _process_radio(field_json):
 
 
 def _process_select(field_json):
+    if (field_json.get('multiple', False)):
+        return forms.MultipleChoiceField()
     return forms.ChoiceField()
 
 
