@@ -25,7 +25,8 @@ def _process_hidden(field_json):
 def _process_number(field_json):
     return forms.FloatField(
         min_value=field_json.get("min", None),
-        max_value=field_json.get("max", None)
+        max_value=field_json.get("max", None),
+        widget=forms.NumberInput(attrs={'step': field_json.get("step", "any")})
     )
 
 
