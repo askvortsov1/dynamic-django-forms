@@ -13,13 +13,13 @@ Install via pip:
 
 Add to settings.INSTALLED_APPS:
 
-`
+``` python
 INSTALLED_APPS = {
     "...",
     "dynamic_forms",
     "..."
 }
-`
+```
 
 ## Components
 
@@ -31,11 +31,13 @@ The main functionality of `dynamic-django-forms` is contained within 2 model fie
 
 Example Setup:
 
-`from dynamic_forms.models import FormField
+``` python
+from dynamic_forms.models import FormField
 
 class Survey:
     # Other Fields Here
-    form = FormField()`
+    form = FormField()
+```
 
 Please note that JSON data can saved into the model field as a python `dict` or a valid JSON string. When the value is retrieved from the database, it will be provided as a `list` containing `dict`s for each dynamic form field.
 
@@ -46,14 +48,17 @@ Please note that JSON data can saved into the model field as a python `dict` or 
 Example Setup:
 
 Model Config:
-`from django.db import models
+``` python
+from django.db import models
 from dynamic_forms.models import ResponseField
 from otherapp.models import Survey
 
 class SurveyResponse:
     # Other Fields Here
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE) # Optional
-    response = ResponseField()`
+    response = ResponseField()
+```
+
 Please note that including a ForeignKey link from the model containing responses to the model containing forms isnt technically required; however, it is highly recommended and will make linking the two much easier
 
 ### Configuring ResponseFields with forms
@@ -69,7 +74,8 @@ You must provide a valid JSON Schema to ResponseField's associated FormField at 
 
 An example of how to do this can be found in the DynamicFormMixin explained in the next section:
 
-`from django.views.generic.edit import FormMixin
+``` python
+from django.views.generic.edit import FormMixin
 
 class DynamicFormMixin(FormMixin):
     form_field = "form"
@@ -96,7 +102,8 @@ class DynamicFormMixin(FormMixin):
         action = form.save(commit=False)
         action.survey = self.form_instance
         action.save()
-        return super().form_valid(form)`
+        return super().form_valid(form)
+```
 
 #### Configuration Shortcut
 
@@ -114,7 +121,8 @@ The process of configuring ResponseFields with forms is somewhat complicated, so
 
 Example:
 
-`class RespondView(DynamicFormMixin, CreateView):
+``` python 
+class RespondView(DynamicFormMixin, CreateView):
     model = SurveyResponse
     fields = ['response']
     template_name = "example/respond.html"
@@ -126,7 +134,8 @@ Example:
     response_field = "response"
 
     def get_success_url(self):
-        return reverse('survey_detail', kwargs={"survey_id": self.form_instance.pk})`
+        return reverse('survey_detail', kwargs={"survey_id": self.form_instance.pk})
+```
 
 ### Django Crispy Forms Support
 
