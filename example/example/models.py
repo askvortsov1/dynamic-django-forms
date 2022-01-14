@@ -8,7 +8,7 @@ class Survey(models.Model):
     form = FormField()
 
     def __str__(self):
-        return "Survey #{}: ".format(self.pk, self.topic)
+        return "Survey #{}: {}".format(self.pk, self.topic)
 
 
 class SurveyResponse(models.Model):
