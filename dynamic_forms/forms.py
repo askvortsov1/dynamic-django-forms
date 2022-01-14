@@ -1,5 +1,4 @@
 from django import forms
-import logging
 
 
 class HeadingField(forms.Field):

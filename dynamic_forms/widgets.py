@@ -3,7 +3,6 @@ import json
 from django import forms
 from django.utils.html import format_html
 from .forms import HeadingField
-import logging
 
 
 class FormBuilderWidget(forms.Textarea):
@@ -28,9 +27,8 @@ class HeadingFieldWidget(HeadingField):
         self.params = params
         super().__init__(attrs)
 
-    def render(self):
-        logging.debug(self.params)
-        return format_html("<h1>123 </h1>")
+    def render(self, name, value, attrs=None, renderer=None):
+        return format_html("<{0}>{1}</{0}>".format(self.params['subtype'], self.params['label']))
 
     def get(self):
         return False

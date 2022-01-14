@@ -1,7 +1,6 @@
 from django import forms
 from .forms import HeadingField
 from .widgets import HeadingFieldWidget
-import logging
 
 
 def _process_checkbox(field_json):
