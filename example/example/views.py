@@ -49,4 +49,3 @@ class RespondView(DynamicFormMixin, CreateView):
 
     def get_success_url(self):
         return reverse('survey_detail', kwargs={"survey_id": self.form_instance.pk})
-
