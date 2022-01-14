@@ -36,10 +36,10 @@ iniconfig==1.1.1
     # via pytest
 mccabe==0.6.1
     # via pylama
-mypy-extensions==0.4.3
-    # via mypy
 mypy==0.931
     # via -r requirements-dev.in
+mypy-extensions==0.4.3
+    # via mypy
 nodeenv==1.5.0
     # via pre-commit
 packaging==20.8
@@ -68,17 +68,17 @@ pylama==7.7.1
     # via -r requirements-dev.in
 pyparsing==2.4.7
     # via packaging
+pytest==6.2.1
+    # via
+    #   pytest-cov
+    #   pytest-django
+    #   pytest-pythonpath
 pytest-cov==2.10.1
     # via -r requirements-dev.in
 pytest-django==4.1.0
     # via -r requirements-dev.in
 pytest-pythonpath==0.7.3
     # via -r requirements-dev.in
-pytest==6.2.1
-    # via
-    #   pytest-cov
-    #   pytest-django
-    #   pytest-pythonpath
 python-dateutil==2.8.1
     # via -r requirements-dev.in
 pyyaml==5.3.1
@@ -103,7 +103,7 @@ tox==3.20.1
     # via -r requirements-dev.in
 typing-extensions==4.0.1
     # via mypy
-urllib3==1.26.2
+urllib3==1.26.5
     # via requests
 virtualenv==20.2.2
     # via
