@@ -10,4 +10,3 @@ python-dateutil
 codecov
 pip-tools
 mypy
-django-stubs
