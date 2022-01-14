@@ -1,6 +1,9 @@
 import json
 
 from django import forms
+from django.utils.html import format_html
+from .forms import HeadingField
+import logging
 
 
 class FormBuilderWidget(forms.Textarea):
@@ -17,3 +20,26 @@ class FormRenderWidget(forms.MultiWidget):
 
     def decompress(self, value):
         return []
+
+
+class HeadingFieldWidget(HeadingField):
+    def __init__(self, attrs=None, params={}):
+        self.attrs = attrs
+        self.params = params
+        super().__init__(attrs)
+
+    def render(self):
+        logging.debug(self.params)
+        return format_html("<h1>123 </h1>")
+
+    def get(self):
+        return False
+
+    def use_required_attribute(self, initial):
+        return False
+
+    def id_for_label(self, id):
+        return ''
+
+    def get_context(self):
+        return {'name': ''}

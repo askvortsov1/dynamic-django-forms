@@ -1,4 +1,7 @@
 from django import forms
+from .forms import HeadingField
+from .widgets import HeadingFieldWidget
+import logging
 
 
 def _process_checkbox(field_json):
@@ -56,6 +59,20 @@ def _process_url(field_json):
     return forms.URLField()
 
 
+def _process_heading(field_json):
+    field = HeadingField()
+    field.widget = HeadingFieldWidget(params=field_json)
+    return field
+
+# TODO
+
+
+def _process_paragraph(field_json):
+    field = forms.ChoiceField()
+    field.widget = forms.RadioSelect()
+    return field
+
+
 TYPE_MAPPING = {
     'checkbox-group': _process_checkbox,
     'date': _process_date,
@@ -66,6 +83,8 @@ TYPE_MAPPING = {
     'select': _process_select,
     'text': _process_text_input,
     'textarea': _process_text_area,
+    'header': _process_heading,
+    'paragraph': _process_paragraph,
     'url': _process_url
 }
 
@@ -87,7 +106,7 @@ def process_field_from_json(field_json):
     field = TYPE_MAPPING[field_type](field_json)
     for attr, val in common_field_attrs.items():
         setattr(field, attr, val)
-    if field_type not in ['radio-group']:
+    if field_type not in ['radio-group', 'header']:
         for attr, val in common_widget_attrs.items():
             field.widget.attrs[attr] = val
     if field_type in ['checkbox-group', 'radio-group', 'select']:
