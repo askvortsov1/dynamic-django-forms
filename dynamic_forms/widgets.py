@@ -2,7 +2,7 @@ import json
 
 from django import forms
 from django.utils.html import format_html
-from .forms import HeadingField
+from .forms import HTMLField
 
 
 class FormBuilderWidget(forms.Textarea):
@@ -21,7 +21,7 @@ class FormRenderWidget(forms.MultiWidget):
         return []
 
 
-class HeadingFieldWidget(HeadingField):
+class HTMLFieldWidget(HTMLField):
     def __init__(self, attrs=None, params={}):
         self.attrs = attrs
         self.params = params

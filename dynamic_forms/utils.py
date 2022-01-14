@@ -1,6 +1,6 @@
 from django import forms
-from .forms import HeadingField
-from .widgets import HeadingFieldWidget
+from .forms import HTMLField
+from .widgets import HTMLFieldWidget
 
 
 def _process_checkbox(field_json):
@@ -59,16 +59,14 @@ def _process_url(field_json):
 
 
 def _process_heading(field_json):
-    field = HeadingField()
-    field.widget = HeadingFieldWidget(params=field_json)
+    field = HTMLField()
+    field.widget = HTMLFieldWidget(params=field_json)
     return field
-
-# TODO
 
 
 def _process_paragraph(field_json):
-    field = forms.ChoiceField()
-    field.widget = forms.RadioSelect()
+    field = HTMLField()
+    field.widget = HTMLFieldWidget(params=field_json)
     return field
 
 
@@ -98,14 +96,16 @@ def process_field_from_json(field_json):
         'initial': field_json.get('value', None),
         'help_text': field_json.get('description', None),
     }
+
     common_widget_attrs = {
         'required': field_json.get('required', False),
         'placeholder': field_json.get('placeholder', False)
     }
     field = TYPE_MAPPING[field_type](field_json)
     for attr, val in common_field_attrs.items():
-        setattr(field, attr, val)
-    if field_type not in ['radio-group', 'header']:
+        if field_type not in ['paragraph', 'header']:
+            setattr(field, attr, val)
+    if field_type not in ['radio-group']:
         for attr, val in common_widget_attrs.items():
             field.widget.attrs[attr] = val
     if field_type in ['checkbox-group', 'radio-group', 'select']:
