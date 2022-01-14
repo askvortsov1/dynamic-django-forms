@@ -28,7 +28,10 @@ class HTMLFieldWidget(HTMLField):
         super().__init__(attrs)
 
     def render(self, name, value, attrs=None, renderer=None):
-        return format_html("<{0}>{1}</{0}>".format(self.params['subtype'], self.params['label']))
+        class_html = ''
+        if 'className' in self.params:
+            class_html = " class='{0}'".format(self.params['className'])
+        return format_html("<{0}{2}>{1}</{0}>".format(self.params['subtype'], self.params['label'], class_html))
 
     def get(self):
         return False

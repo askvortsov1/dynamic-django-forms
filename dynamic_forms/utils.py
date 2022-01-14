@@ -99,7 +99,8 @@ def process_field_from_json(field_json):
 
     common_widget_attrs = {
         'required': field_json.get('required', False),
-        'placeholder': field_json.get('placeholder', False)
+        'placeholder': field_json.get('placeholder', False),
+        'class': field_json.get('className', False),
     }
     field = TYPE_MAPPING[field_type](field_json)
     for attr, val in common_field_attrs.items():
