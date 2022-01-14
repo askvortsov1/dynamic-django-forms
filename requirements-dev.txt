@@ -6,6 +6,8 @@
 #
 appdirs==1.4.4
     # via virtualenv
+asgiref==3.4.1
+    # via django
 attrs==20.3.0
     # via pytest
 certifi==2020.12.5
@@ -24,6 +26,14 @@ coverage==5.3.1
     #   pytest-cov
 distlib==0.3.1
     # via virtualenv
+django-stubs-ext==0.3.1
+    # via django-stubs
+django-stubs==1.9.0
+    # via -r requirements-dev.in
+django==4.0.1
+    # via
+    #   django-stubs
+    #   django-stubs-ext
 filelock==3.0.12
     # via
     #   tox
@@ -36,6 +46,12 @@ iniconfig==1.1.1
     # via pytest
 mccabe==0.6.1
     # via pylama
+mypy-extensions==0.4.3
+    # via mypy
+mypy==0.931
+    # via
+    #   -r requirements-dev.in
+    #   django-stubs
 nodeenv==1.5.0
     # via pre-commit
 packaging==20.8
@@ -88,13 +104,27 @@ six==1.15.0
     #   virtualenv
 snowballstemmer==2.0.0
     # via pydocstyle
+sqlparse==0.4.2
+    # via django
 toml==0.10.2
     # via
+    #   django-stubs
     #   pre-commit
     #   pytest
     #   tox
+tomli==2.0.0
+    # via mypy
 tox==3.20.1
     # via -r requirements-dev.in
+types-pytz==2021.3.4
+    # via django-stubs
+types-pyyaml==6.0.3
+    # via django-stubs
+typing-extensions==4.0.1
+    # via
+    #   django-stubs
+    #   django-stubs-ext
+    #   mypy
 urllib3==1.26.2
     # via requests
 virtualenv==20.2.2
