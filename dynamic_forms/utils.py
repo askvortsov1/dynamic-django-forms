@@ -34,7 +34,9 @@ def _process_number(field_json):
 
 def _process_radio(field_json):
     field = forms.ChoiceField()
-    field.widget = forms.RadioSelect()
+    field.widget = forms.RadioSelect(
+        attrs={"required": field_json.get("required", False)}
+    )
     return field
 
 
