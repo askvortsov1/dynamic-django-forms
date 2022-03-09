@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.html import strip_tags
 from .forms import HTMLField
 from .widgets import HTMLFieldWidget
 
@@ -94,7 +95,7 @@ def process_field_from_json(field_json):
     field_type = field_json['type']
     common_field_attrs = {
         'required': field_json.get('required', False),
-        'label': field_json.get('label', None),
+        'label': strip_tags(field_json.get('label', None)),
         'initial': field_json.get('value', None),
         'help_text': field_json.get('description', None),
     }
