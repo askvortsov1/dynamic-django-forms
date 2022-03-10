@@ -93,7 +93,7 @@ def process_field_from_json(field_json):
         raise TypeError("Each field JSON must be a dictionary")
     field_type = field_json['type']
     if field_type == 'text':
-        field_type = field_json['subtype']
+        field_type = field_json.get('subtype', 'text')
     common_field_attrs = {
         'required': field_json.get('required', False),
         'label': field_json.get('label', None),
