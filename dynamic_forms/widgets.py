@@ -44,3 +44,6 @@ class HTMLFieldWidget(HTMLField):
 
     def get_context(self):
         return {'name': ''}
+    
+    def value_from_datadict(self, data, files, name):
+        return data.get(name)
