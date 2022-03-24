@@ -25,7 +25,7 @@
                 subtype: "email",
                 icon: "✉"
             }],
-            formData: textArea.val().trim(),
+            formData: JSON.parse(textArea.val().trim()),
             scrollToFieldOnAdd: true,
             stickyControls: {
                 enable: true,
