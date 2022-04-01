@@ -23,6 +23,7 @@ def _process_email(field_json):
 def _process_hidden(field_json):
     field = forms.CharField()
     field.widget = forms.HiddenInput()
+    return field
 
 
 def _process_number(field_json):
@@ -109,9 +110,9 @@ def process_field_from_json(field_json):
     }
     field = TYPE_MAPPING[field_type](field_json)
     for attr, val in common_field_attrs.items():
-        if field_type not in ['paragraph', 'header']:
+        if field_type not in ['paragraph', 'header', 'hidden']:
             setattr(field, attr, val)
-    if field_type not in ['radio-group']:
+    if field_type not in ['radio-group', 'hidden']:
         for attr, val in common_widget_attrs.items():
             field.widget.attrs[attr] = val
     if field_type in ['checkbox-group', 'radio-group', 'select']:
@@ -120,6 +121,8 @@ def process_field_from_json(field_json):
         ]
         field.choices = choices
         field.widget.choices = choices
+    if field_type == 'hidden':
+        setattr(field, 'initial', field_json.get('value', None))
     return field
 
 
