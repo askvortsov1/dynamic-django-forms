@@ -170,6 +170,14 @@ Cons:
 
 * Responses cannot be changed after submission
 
+## Custom JS for FormBuilder
+
+On `settings.py` you can use a variable to inject custom JS code before that is initialized.
+
+```
+DYNAMIC_FORMS_CUSTOM_JS = 'console.log(1)'
+```
+
 ## Example Site
 
 To run an example site, run `cd example && docker-compose up`. If you do not use docker, you can manually install the requirements with `pip install -r example/requirements.txt` and run the site with `python example/manage.py runserver`.
