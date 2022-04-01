@@ -36,7 +36,7 @@
                 }
             }
         };
-        {{ DYNAMIC_FORMS_CUSTOM_JS }}
+        {{ DYNAMIC_FORMS_CUSTOM_JS|safe }}
         var formBuilder = $('#fb-editor').formBuilder(options);
         $("form").submit(function (e) {
             textArea.val(formBuilder.actions.getData('json'))
