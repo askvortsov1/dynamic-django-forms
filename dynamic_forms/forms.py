@@ -6,7 +6,7 @@ class HTMLField(forms.Field):
         self.error_messages = {}
         self.label_suffix = None
         self.help_text = None
-        self.label = None
+        self.label = ''
         self.initial = ''
         self.required = False
         self.attrs = {'id': False}

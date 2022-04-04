@@ -9,11 +9,12 @@ class MultiValueBoundField(BoundField):
             template = "dynamic_forms/widgets/subfield_crispy.html"
         else:
             template = "dynamic_forms/widgets/subfield.html"
-        label = sub_bf.label_tag()
-        help_text = sub_bf.field.help_text
-        if sub_bf.field_type == 'HTMLField':
+        if sub_bf.field_type == 'HTMLField' or sub_bf.label is None:
             label = ''
             help_text = ''
+        else:
+            label = sub_bf.label_tag()
+            help_text = sub_bf.field.help_text
 
         return render_to_string(
             template,
@@ -29,6 +30,7 @@ class MultiValueBoundField(BoundField):
         for i, subfield in enumerate(self.field.fields):
             sub_bf = BoundField(self.form, subfield, "{}_{}".format(self.name, i))
             sub_bf.field_type = subfield.__class__.__name__
+            sub_bf.label = subfield.label
             subfield_widgets.append(self._subfield_as_widget(sub_bf))
         return render_to_string(
             "dynamic_forms/widgets/formrender.html",
