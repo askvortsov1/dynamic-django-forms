@@ -172,7 +172,10 @@ Cons:
 
 ## Custom JS for FormBuilder
 
-On `settings.py` you can use a variable to inject custom JS code before that is initialized.
+On `settings.py` you can use a variable to inject custom JS code before the form builder is initialized. Note that the `options` variable. Note that when this custom JS runs, the following variables are available:
+
+- `textArea`: This is a hidden textarea input used to submit the JSON form schema.
+- `options`: This is a [FormBuilder Options object](https://formbuilder.online/docs/) that you can override and modify to change how the form is displayed.
 
 ```
 DYNAMIC_FORMS_CUSTOM_JS = 'console.log(1)'
