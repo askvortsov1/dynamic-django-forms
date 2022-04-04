@@ -170,6 +170,17 @@ Cons:
 
 * Responses cannot be changed after submission
 
+## Custom JS for FormBuilder
+
+On `settings.py` you can use a variable to inject custom JS code before the form builder is initialized. Note that the `options` variable. Note that when this custom JS runs, the following variables are available:
+
+- `textArea`: This is a hidden textarea input used to submit the JSON form schema.
+- `options`: This is a [FormBuilder Options object](https://formbuilder.online/docs/) that you can override and modify to change how the form is displayed.
+
+```
+DYNAMIC_FORMS_CUSTOM_JS = 'console.log(1)'
+```
+
 ## Example Site
 
 To run an example site, run `cd example && docker-compose up`. If you do not use docker, you can manually install the requirements with `pip install -r example/requirements.txt` and run the site with `python example/manage.py runserver`.

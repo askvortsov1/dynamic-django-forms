@@ -3,10 +3,16 @@ import json
 from django import forms
 from django.utils.html import format_html
 from .forms import HTMLField
+from django.conf import settings
 
 
 class FormBuilderWidget(forms.Textarea):
     template_name = "dynamic_forms/widgets/formbuilder.html"
+
+    def get_context(self, name, value, attrs):
+        context = super().get_context(name, value, attrs)
+        context['DYNAMIC_FORMS_CUSTOM_JS'] = settings.DYNAMIC_FORMS_CUSTOM_JS
+        return context
 
     def format_value(self, value):
         if value is None:
