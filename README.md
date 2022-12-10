@@ -149,15 +149,17 @@ Please note that you are responsible for importing any CSS/JS libraries needed b
 
 `dynamic-django-forms` currently supports the following field types:
 
-* Checkbox Group
-* Date Field
-* Hidden Input
-* Number
-* Radio Group
-* Select
-* Text Field
-* Email Field
-* Text Area
+| Description    | JSON           |
+|----------------|----------------|
+| Checkbox Group | checkbox-group |
+| Date Field     | date           |
+| Hidden Input   | hidden         |
+| Number         | number         |
+| Radio Group    | radio-group    |
+| Select         | select         |
+| Text Field     | text           |
+| Email Field    | email          |
+| Text Area      | textarea       |
 
 The only major limitation of `dynamic-django-forms`, which is also one of its major features, is the dissociation of dynamic form questions and responses.
 
