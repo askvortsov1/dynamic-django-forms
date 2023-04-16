@@ -1,5 +1,13 @@
 # Dynamic Django Forms
 
+## Looking for Maintainer
+
+I haven't used Django in years, and am not actively maintaining this package.
+If anyone is interested in maintaining this package, either on this repo or
+as a fork, please let me know in a new issue!
+
+## Anyways...
+
 **dynamic-django-forms** is a simple, reusable app that allows you to build (and respond to) dynamic forms, i.e. forms that have variable numbers and types of fields. A few examples of uses include:
 
 1. Building and sending out surveys
